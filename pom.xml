@@ -26,7 +26,7 @@
         <maprstreams.version>0.9.0.0-mapr-1611-streams-5.2.0</maprstreams.version>
 -->
 <!-- -->
-        <scala.version>2.11.8</scala.version>
+        <scala.version>2.11.12</scala.version>
         <scala.binary.version>2.11</scala.binary.version>
 
         <!-- version = <spark_version>-mapr-<mapr_eco_version> -->

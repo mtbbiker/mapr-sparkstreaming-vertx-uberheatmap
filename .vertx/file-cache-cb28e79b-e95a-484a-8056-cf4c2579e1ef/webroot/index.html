@@ -37,8 +37,8 @@ limitations under the License.
         <script src="js/vertx/vertxbus.js"></script>
         <!-- Google Maps -->
         <link href="https://google-developers.appspot.com/maps/documentation/javascript/examples/default.css" rel="stylesheet" type="text/css" />
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbKXTPdUuKimkq5ONrChpNuxnI5SMhMUI&libraries=visualization"></script>
-        <!--script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBGC9GqQXiG5edzIbeIzWt_4nihBfh64us&libraries=visualization"></script-->
+        <!--script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBbKXTPdUuKimkq5ONrChpNuxnI5SMhMUI&libraries=visualization"></script-->
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBGC9GqQXiG5edzIbeIzWt_4nihBfh64us&libraries=visualization"></script>
         <script src="js/jquery/jquery.min.js"></script>
         <script src="js/jquery/jquery-ui-widget.min.js"></script>
         <script src="js/bootstrap/js/bootstrap.min.js"></script>
@@ -73,7 +73,7 @@ limitations under the License.
 
             }
 
-            var eb = new vertx.EventBus("http://" + location.host + ":8080/eventbus");
+            var eb = new vertx.EventBus("http://" + location.host + "/eventbus");
             eb.onopen = function () {
                 console.log("open");
                 eb.registerHandler("dashboard", function (data) {

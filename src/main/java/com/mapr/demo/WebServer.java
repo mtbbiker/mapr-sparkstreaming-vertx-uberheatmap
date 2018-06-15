@@ -13,6 +13,7 @@ import org.apache.kafka.clients.consumer.KafkaConsumer;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Date;
 import java.util.Properties;
 
 public class WebServer {
@@ -49,10 +50,20 @@ public class WebServer {
         // Create a MapR Streams Consumer
         KafkaConsumer<String, String> consumer;
         Properties properties = new Properties();
-        properties.setProperty("group", "vertx_dashboard");
-        properties.setProperty("enable.auto.commit", "true");
-        properties.setProperty("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
-        properties.setProperty("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
+//        properties.setProperty("bootstrap.servers", "10.0.17.100:9092");
+//        properties.setProperty("group", "vertx_dashboard");
+//        properties.setProperty("enable.auto.commit", "true");
+//        properties.setProperty("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
+//        properties.setProperty("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
+        
+properties.setProperty("bootstrap.servers", "10.0.17.101:9092,10.0.17.102:9092,10.0.17.103:9092");
+            properties.put("group.id", "group-2");
+        properties.put("enable.auto.commit", "true");
+        properties.put("auto.commit.interval.ms", "1000");
+        properties.put("auto.offset.reset", "earliest");
+        properties.put("session.timeout.ms", "30000");
+        properties.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
+        properties.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
 
         consumer = new KafkaConsumer<>(properties);
  
@@ -64,6 +75,12 @@ public class WebServer {
                 vertx.eventBus().publish("dashboard", record.value());
                 System.out.println(record.value());
             }
+            
+//            for (ConsumerRecord<String, byte[]> record : records) {
+////        System.out.println("Partition: " + record.partition() + " Offset: " + record.offset()
+////            + " Value: " + record.value() + " ThreadID: " + Thread.currentThread().getId());
+//
+//            }
         }
 
     }
